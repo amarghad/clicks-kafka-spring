@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Click Tracker</h1>
+
+  <!-- User ID Input -->
+  <div>
+    <label for="userId">User ID:</label>
+    <input id="userId" [(ngModel)]="userId" placeholder="Enter your user ID" />
+  </div>
+
+  <!-- Click Button -->
+  <button (click)="recordClick()">Click Here</button>
+</div>

@@ -1,39 +1,27 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ClickService} from '../../service/click.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-click-tracker',
+  selector: 'click-trigger',
   templateUrl: './click-trigger.component.html',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule, ReactiveFormsModule
   ],
   styleUrl: './click-trigger.component.css'
 })
-export class ClickTriggerComponent implements OnInit {
+export class ClickTriggerComponent {
 
   userId: string = '';
-  clickCount: number = 0;
 
   constructor(private clickService: ClickService) {}
 
-  ngOnInit(): void {
-    this.fetchClickCounts();
-  }
-
   recordClick(): void {
     if (this.userId) {
-      this.clickService.recordClick(this.userId).subscribe(() => {
-        this.fetchClickCounts();
+      this.clickService.recordClick(this.userId).subscribe(next => {
       });
     }
-  }
-
-  fetchClickCounts(): void {
-    this.clickService.getClickCounts().subscribe((counts) => {
-      this.clickCount = counts.clicks;
-    });
   }
 
 }

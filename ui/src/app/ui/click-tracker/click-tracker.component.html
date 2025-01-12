@@ -1,1 +1,28 @@
-<p>click-tracker works!</p>
+<div class="container">
+  <h1>Click Tracker</h1>
+
+  <!-- Username Input -->
+  <div class="input-group">
+    <label for="username">Username:</label>
+    <input
+      id="username"
+      [(ngModel)]="username"
+      placeholder="Enter your username"
+    />
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-group">
+    <button (click)="getClickCount()">Refresh Count</button>
+  </div>
+
+  <!-- Display Click Count -->
+  <div *ngIf="clickCount !== null" class="result">
+    <p>Total Clicks for <strong>{{ username }}</strong>: {{ clickCount }}</p>
+  </div>
+
+  <!-- Display Messages -->
+  <div *ngIf="message" class="message">
+    <p>{{ message }}</p>
+  </div>
+</div>

@@ -13,8 +13,8 @@ export class ClickService {
     return this.http.get<void>(`http://localhost:8080/click?userId=${userId}`);
   }
 
-  getClickCounts(): Observable<{ clicks: number }> {
-    return this.http.get<{ clicks: number }>(`http://localhost:8081/clicks/count`);
+  getClickCount(userId: string): Observable<{ clicks: number }> {
+    return this.http.get<{ clicks: number }>(`http://localhost:8081/clicks/count?userId=${userId}`);
   }
 
 }
